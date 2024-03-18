@@ -36,7 +36,7 @@ with app.app_context():
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template('home.html', subtitle='Home Page', text='This is the home page')
+    return render_template('test.html', subtitle='Home Page', text='This is the home page')
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
@@ -50,4 +50,4 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5001)

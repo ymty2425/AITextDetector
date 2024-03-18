@@ -1,0 +1,216 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+    scroll-behavior: smooth;
+    transition: all 2s smooth;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 0 20px;
+    width: 97%;
+    position: sticky;
+    cursor: pointer;
+    height: 10vh;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    display: block;
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 5%;
+    padding: 2%;
+    font-size: 140%;
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.sign-in {
+    background-color: transparent;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+  }
+
+.get-started {
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding around the text */
+    border-radius: 25px; /* Rounded borders */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Allows padding and margin */
+    transition: background-color 0.3s; /* Smooth background color transition */
+    box-shadow: 0 2px 5px 0 rgba(0, 123, 255, 0.5); /* Subtle shadow */
+}
+
+.get-started:hover {
+    background-color: #0056b3; /* Darker blue background on hover */
+}
+
+.navbar div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    left: 5%;
+    top: 0%;
+    font-size: 140%;
+    scroll-snap-align: start;
+    background-color: #fff;
+    /* border-bottom: 1px solid #000; */
+}
+
+.active {
+    color: #000;
+    background-color: #fff;
+}
+
+.input-section {
+    justify-content: center;
+    align-items: bottom;
+    text-align: center;
+    height: 85vh;
+    font-size: 100%;
+    scroll-snap-align: start;
+    background-color: #f3f4f6;
+}
+
+.input-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+.input-form {
+    display: flex;
+    width: 50%; /* Adjust the width as necessary */
+    max-width: 800px; /* Set a max-width for larger screens */
+}
+
+#ai-check-input {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    margin-right: 10px;
+}
+
+.check-btn {
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 2px 2px 0 rgba(0, 123, 255, 0.5);
+}
+
+.check-btn:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+/* Add to your existing CSS */
+.results {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+  }
+  
+  .results-summary {
+    margin-bottom: 20px;
+  }
+  
+  .results-percentage {
+    font-size: 24px;
+    color: #dc3545; /* Adjust the color as needed */
+    font-weight: bold;
+  }
+  
+  .results-text {
+    display: block; /* Or inline-block, depending on layout */
+    margin-top: 5px;
+    font-size: 18px;
+  }
+  
+  .results-detail {
+    display: block;
+    margin-top: 5px;
+    font-size: 16px;
+    color: #6c757d;
+  }
+  
+  .humanize-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .notification {
+    margin-top: 20px;
+    color: #dc3545; /* Adjust the color as needed */
+    font-size: 16px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  
+
+@media screen and (max-width: 768px) {
+    .nav-links {
+      display: none; /* Hide the navbar items on small screens */
+    }
+    .navbar {
+      justify-content: space-between;
+    }
+    .logo,
+    .buttons {
+      flex: 1;
+    }
+    .logo {
+      flex-grow: 0; /* Do not allow the logo to grow */
+    }
+  }

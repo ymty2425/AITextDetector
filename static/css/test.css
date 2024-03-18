@@ -3,6 +3,12 @@
     padding: 0;
 }
 
+.logo {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    cursor: pointer;
+}
 
 html {
     scroll-behavior: smooth;
@@ -106,43 +112,44 @@ a {
     font-size: 100%;
     scroll-snap-align: start;
     background-color: #f3f4f6;
-}
-
-.input-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 20px;
-  }
+}
   
 .input-form {
     display: flex;
-    width: 50%; /* Adjust the width as necessary */
-    max-width: 800px; /* Set a max-width for larger screens */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
 }
 
 #ai-check-input {
-    flex-grow: 1;
-    padding: 10px;
+    padding: 20px;
     border-radius: 4px;
     border: 1px solid #ced4da;
-    margin-right: 10px;
+    text-align: top;
+    width: 600px;
+    height: 300px;
+    margin-top: 20px;
+    resize: vertical; 
+    align-items: flex-start;
 }
 
 .check-btn {
-    padding: 10px 20px;
+    padding: 20px;
     border-radius: 4px;
     border: none;
     background-color: #007bff;
     color: white;
     cursor: pointer;
+    margin-left: 510px;
     box-shadow: 0 2px 2px 0 rgba(0, 123, 255, 0.5);
+    font-size: medium;
 }
 
 .check-btn:hover {
     background-color: #0056b3;
 }
-
 
 
 
@@ -153,6 +160,8 @@ a {
     background: #f8f9fa;
     border-radius: 4px;
     border: 1px solid #ddd;
+    /* width: 500px;
+    height: 200px; */
   }
   
   .results-summary {

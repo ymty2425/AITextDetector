@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/test.css">
+    <link rel="stylesheet" href="static/css/test.css">
     <title>Document</title>
 </head>
 <style></style>
 <body>
     <nav class="navbar">
         <a href="#" class="logo">
-            <img src="/pics/logo.png" alt="Your Logo">
+            <img src="/stati/image/logo.png" alt="Aquafina.Ai">
         </a>
         <ul class="nav-links">
             <li><a href="#" class="active">Home</a></li>
+            <li><a href="#Features">Pricing</a></li>
             <li><a href="#Products">Products</a></li>
             <li><a href="#Service">API</a></li>
             <li><a href="#About">About</a></li>
@@ -26,11 +27,10 @@
     </nav>
     <section class="input-section">
         <form class="input-form">
-          <input type="text" id="ai-check-input" placeholder="Type or paste your content here..." />
+          <textarea type="text" id="ai-check-input" placeholder="Type or paste your content here..."></textarea>
           <button type="submit" class="check-btn">Check for AI</button>
         </form>
 
-        <!-- Add this part below your existing form in the section element -->
         <div id="results" class="results hidden">
             <div class="results-summary">
                 <span class="results-percentage">100%</span>
@@ -39,7 +39,6 @@
             </div>
             <div class="results-content">
                 <p>Fantasy Football is a game played by millions of football fans around the world...</p>
-            <!-- Insert the rest of your content here -->
             <!-- </div>
             <button class="humanize-btn">Humanize Text</button> -->
         </div>

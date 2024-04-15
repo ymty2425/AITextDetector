@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Document</title>
+
+
+    <!-- Nav -->
+    <!--=============== REMIXICONS ===============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="/static/css/nav.css">
+    <link rel="stylesheet" href="/static/css/home.css">
+
+</head>
+
+<body>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+        <nav class="nav container">
+           <a href="static/image/logo.png" class="nav__logo">Aquafina.Ai</a>
+
+           <div class="nav__menu" id="nav-menu">
+              <ul class="nav__list">
+                 <li class="nav__item">
+                    <a href="/home" class="nav__link">Home</a>
+                 </li>
+
+                 <li class="nav__item">
+                    <a href="/pricing" class="nav__link">Pricing</a>
+                 </li>
+
+                 <!-- <li class="nav__item">
+                    <a href="#" class="nav__link">About Us</a>
+                 </li>
+
+                 <li class="nav__item">
+                    <a href="#" class="nav__link">Services</a>
+                 </li> -->
+
+                 <li class="nav__item">
+                    <a href="/products" class="nav__link">Products</a>
+                 </li>
+
+                 <li class="nav__item">
+                    <a href="#" class="nav__link">Contact Us</a>
+                 </li>
+              </ul>
+
+              <!-- Close button -->
+              <div class="nav__close" id="nav-close">
+                 <i class="ri-close-line"></i>
+              </div>
+           </div>
+
+           <div class="nav__actions">
+              {% if "username" in session %}
+              <a href="/users/{{session["username"]}}" id="login-btn"><i class="ri-user-line nav__login"></i></a>
+              {% else %}
+              <a href="/login" id="login-btn"><i class="ri-user-line nav__login"></i></a>
+              {% endif %}
+
+              {% if "username" in session %}
+              <form action="/accounts/logout/" method="post" enctype="multipart/form-data">
+                <input type="submit" name="logout" value="Logout"/>
+              </form>
+              {% endif %}
+           </div>
+
+        </nav>
+    </header>
+
+    <section class="price_plan_area section_padding_130_80" id="pricing">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <div class="section-heading text-center wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                        <!-- <h6>Pricing Plans</h6> -->
+                        <h1 style="padding: 10px;">AI Text Detector</h1>
+                        <p>Navigate the digital landscape with confidence using Aquafina.AI's cutting-edge text detection system. In an era where information is abundant but its authenticity is not always clear, our platform empowers users to distinguish between genuine human writing and AI-generated content. With seamless analysis and real-time results, we offer the critical tool you need to ensure the integrity of the content you consume, create, and share. Trust Aquafina.AI to bring authenticity back to communication.</p>
+                        <div class="line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="toggle-buttons">
+        <button type="button" onclick="setTextAreaContent(this)">Human</button>
+        <button type="button" onclick="setTextAreaContent(this)">ChatGpt</button>
+        <button type="button" onclick="setTextAreaContent(this)">AI + Human</button>
+        <button type="button" onclick="setTextAreaContent(this)">Claude</button>
+    </div>    
+      
+    <textarea id="input-area" class="input-area" placeholder="Type or paste your content here..."></textarea>
+    <button type="button" class="submit-button" onclick="checkText()">Check for AI</button>
+    
+    <div id="result-area" class="result-area">
+        <div><h5>Analysis</h5></div>
+        <div id="loadingIcon" class="loader hidden"></div>
+        <div id="result-text" class="result-text hidden">result</div>
+        <div id="notification" class="notification hidden">Notification: Please enter some content...</div>
+    </div>
+
+
+    <script>
+        function setButtonActive(selectedButton) {
+            // Clear active state from all buttons
+            document.querySelectorAll('.toggle-buttons button').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Set the clicked button to active
+            selectedButton.classList.add('active');
+        }
+
+        function setTextAreaContent(button) {
+            // Retrieve the button text content
+            var buttonText = button.textContent || button.innerText;
+
+            // Set the content of the textarea to the button's text content
+            var textarea = document.getElementById('input-area');
+            if (buttonText.toLowerCase() === 'human') {
+                textarea.value = 'human';
+            } else if (buttonText.toLowerCase() === 'chatgpt') {
+                textarea.value = 'chatGPT';
+            } else if (buttonText.toLowerCase() === 'ai + human') {
+                textarea.value = 'ai + human';
+            } else if (buttonText.toLowerCase() === 'claude') {
+                textarea.value = 'claude';
+            } else {
+                textarea.value = "Other option selected"
+                console.error("buttonText error.")
+            }
+            
+            // Update the active state for the buttons
+            setButtonActive(button);
+            }
+    </script>
+      
+      <script>
+        function checkText() {
+            // Get the text from the textarea
+            const text = document.getElementById('input-area').value;
+
+            const loadingIcon = document.getElementById('loadingIcon'); // Get the loading icon
+            const resultText = document.getElementById('result-text'); 
+            const notification = document.getElementById('notification'); 
+
+            if (text.trim().length === 0) {
+                // Show notification if input is empty
+                resultText.classList.add('hidden');
+                notification.classList.remove('hidden');
+            } else {
+                // Show results if input is not empty
+                notification.classList.add('hidden');
+                resultText.classList.remove('hidden');
+            }
+
+            // Display the loading icon
+            loadingIcon.classList.remove('hidden');
+
+            // Get the result from the API
+            fetch("/api/check_text_test", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                text: text,
+              }),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                const isAI = data.isAI;
+
+                // Hide the loading icon
+                loadingIcon.classList.add('hidden');
+
+                // Show the results
+                var element = document.getElementById("result-text");
+                if (isAI === 1) {
+                    element.textContent = "AI";
+                } else if (isAI === 0) {
+                    element.textContent = "NOT AI";
+                } else {
+                    console.error("Result is not valid: isAI = " + isAI);
+                }
+
+            })
+            .catch((error) => {
+                // Hide the loading icon even if there is an error
+                loadingIcon.classList.add('hidden');
+                console.error(error);
+            });
+          }
+
+    </script>
+
+</body>
+</html>

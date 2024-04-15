@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>single price plan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Nav -->
+    <!--=============== REMIXICONS ===============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="/static/css/nav.css">
+    <link rel="stylesheet" href="/static/css/pricing.css">
+    <link rel="stylesheet" href="/static/css/products.css">
+
+</head>
+
+<body>
+    <link rel="stylesheet" href="https://cdn.lineicons.com/3.0/lineicons.css">
+
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+        <nav class="nav container">
+           <a href="#" class="nav__logo">Aquafina.Ai</a>
+
+           <div class="nav__menu" id="nav-menu">
+              <ul class="nav__list">
+                 <li class="nav__item">
+                    <a href="/home" class="nav__link">Home</a>
+                 </li>
+
+                 <li class="nav__item">
+                    <a href="/pricing" class="nav__link">Pricing</a>
+                 </li>
+
+                 <!-- <li class="nav__item">
+                    <a href="#" class="nav__link">About Us</a>
+                 </li>
+
+                 <li class="nav__item">
+                    <a href="#" class="nav__link">Services</a>
+                 </li> -->
+
+                 <li class="nav__item">
+                  <a href="/products" class="nav__link">Products</a>
+                  </li>
+
+                 <li class="nav__item">
+                    <a href="#" class="nav__link">Contact Me</a>
+                 </li>
+              </ul>
+
+              <!-- Close button -->
+              <div class="nav__close" id="nav-close">
+                 <i class="ri-close-line"></i>
+              </div>
+           </div>
+
+           <div class="nav__actions">
+            {% if "username" in session %}
+            <a href="/users/{{session["username"]}}" id="login-btn"><i class="ri-user-line nav__login"></i></a>
+            {% else %}
+            <a href="/login" id="login-btn"><i class="ri-user-line nav__login"></i></a>
+            {% endif %}
+
+            {% if "username" in session %}
+            <form action="/accounts/logout/" method="post" enctype="multipart/form-data">
+               <input type="submit" name="logout" value="Logout"/>
+            </form>
+            {% endif %}
+         </div>
+
+        </nav>
+     </header>
+
+    <section class="price_plan_area" id="pricing">
+        <div class="container">
+
+            <div class="row justify-content-center">
+                <div class="col-12">
+
+                <div class="section-heading wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                <!-- <h6>Pricing Plans</h6> -->
+                <h3>Explore our products!</h3>
+                <p>Dive into the world of AI with our state-of-the-art detection and analytics solutions. Our product are meticulously crafted to deliver unparalleled performance, ease of use, and the security you need in a digitized era.</p>
+                <div class="line"></div>
+                </div>
+                </div>
+            </div>
+
+            <div class="feature-container">
+                <div class="feature">
+                  <img src="/static/image/logo.png" alt="AI Detector Icon" class="feature-icon">
+                  <div class="feature-content">
+                    <a href="/home"><p class="feature-title">AI detector</p></a>
+                    <p class="feature-description">Empower your content verification with our AI Detector. Designed for simplicity and efficiency, our tool helps you identify AI-generated texts quickly.</p>
+                  </div>
+                </div>
+                
+                <div class="feature">
+                  <img src="/static/image/logo.png" alt="In Development Icon" class="feature-icon">
+                  <div class="feature-content">
+                    <p class="feature-title">In development</p>
+                    <p class="feature-description">Stay ahead with our latest innovation, currently in development. This upcoming product promises to transform your experience by integrating cutting-edge technology with user-centered design.</p>
+                  </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>

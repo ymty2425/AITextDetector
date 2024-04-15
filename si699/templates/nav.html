@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+   <html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <!--=============== REMIXICONS ===============-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+
+      <!--=============== CSS ===============-->
+      <link rel="stylesheet" href="static/css/nav.css">
+
+      <title>Responsive navbar with search and login</title>
+   </head>
+   <body>
+      <!--==================== HEADER ====================-->
+      <header class="header" id="header">
+         <nav class="nav container">
+            <a href="#" class="nav__logo">Aquafina.Ai</a>
+
+            <div class="nav__menu" id="nav-menu">
+               <ul class="nav__list">
+                  <li class="nav__item">
+                     <a href="/home" class="nav__link">Home</a>
+                  </li>
+
+                  <li class="nav__item">
+                     <a href="/pricing" class="nav__link">Pricing</a>
+                  </li>
+
+                  <!-- <li class="nav__item">
+                    <a href="#" class="nav__link">About Us</a>
+                 </li>
+
+                 <li class="nav__item">
+                    <a href="#" class="nav__link">Services</a>
+                 </li> -->
+
+                 <li class="nav__item">
+                  <a href="/products" class="nav__link">Products</a>
+                  </li>
+
+                  <li class="nav__item">
+                     <a href="#" class="nav__link">Contact Me</a>
+                  </li>
+               </ul>
+
+               <!-- Close button -->
+               <div class="nav__close" id="nav-close">
+                  <i class="ri-close-line"></i>
+               </div>
+            </div>
+
+            <div class="nav__actions">
+               {% if "username" in session %}
+               <a href="/users/{{session["username"]}}/" id="login-btn"><i class="ri-user-line nav__login"></i></a>
+               {% else %}
+               <a href="/login" id="login-btn"><i class="ri-user-line nav__login"></i></a>
+               {% endif %}
+
+               {% if "username" in session %}
+              <form action="/accounts/logout/" method="post" enctype="multipart/form-data">
+                <input type="submit" name="logout" value="Logout"/>
+              </form>
+              {% endif %}
+            </div>
+
+         </nav>
+      </header>
+
+      
+   </body>
+</html>

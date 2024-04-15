@@ -1,0 +1,20 @@
+#!/bin/bash
+# si699run
+
+# Stop on errors
+# See https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
+set -Eeuo pipefail
+
+
+if [ ! -f "var/si699.sqlite3" ];then
+echo "database file does not exist, so creating now."
+set -x
+./bin/si699db create
+fi
+
+set -x
+export FLASK_ENV=development
+export FLASK_APP=si699/app.py
+# flask run --host 0.0.0.0 --port 5001
+flask run --port 5001 # http://127.0.0.1:5001/
+

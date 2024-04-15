@@ -1,108 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-}
 
-.logo {
-    display: flex;
-    align-items: left;
-    justify-content: left;
-    cursor: pointer;
-}
-
-html {
-    scroll-behavior: smooth;
-    transition: all 2s smooth;
-}
-
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #fff;
-    padding: 0 20px;
-    width: 97%;
-    position: sticky;
-    cursor: pointer;
-    height: 10vh;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-links li a {
-    text-decoration: none;
-    color: #333;
-    padding: 10px 15px;
-    display: block;
-}
-
-.navbar ul {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    gap: 5%;
-    padding: 2%;
-    font-size: 140%;
-}
-
-.nav-links li {
-    list-style: none;
-}
-
-a {
-    color: #000;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-}
-
-.sign-in {
-    background-color: transparent;
-    text-decoration: none;
-    padding: 10px 15px;
-    margin-right: 10px;
-    border-radius: 5px;
-    transition: background-color 0.2s;
-  }
-
-.get-started {
-    background-color: #007bff; /* Blue background */
-    color: white; /* White text */
-    padding: 10px 20px; /* Padding around the text */
-    border-radius: 25px; /* Rounded borders */
-    text-decoration: none; /* Remove underline */
-    display: inline-block; /* Allows padding and margin */
-    transition: background-color 0.3s; /* Smooth background color transition */
-    box-shadow: 0 2px 5px 0 rgba(0, 123, 255, 0.5); /* Subtle shadow */
-}
-
-.get-started:hover {
-    background-color: #0056b3; /* Darker blue background on hover */
-}
-
-.navbar div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    left: 5%;
-    top: 0%;
-    font-size: 140%;
-    scroll-snap-align: start;
-    background-color: #fff;
-    /* border-bottom: 1px solid #000; */
-}
-
-.active {
-    color: #000;
-    background-color: #fff;
-}
 
 .input-section {
     justify-content: center;
@@ -113,6 +9,8 @@ a {
     scroll-snap-align: start;
     background-color: #f3f4f6;
     padding: 20px;
+    /* top: 100px; */
+    position: relative;
 }
   
 .input-form {
@@ -223,3 +121,22 @@ a {
       flex-grow: 0; /* Do not allow the logo to grow */
     }
   }
+
+  .loader {
+    border: 5px solid #f3f3f3; /* Light grey */
+    border-top: 5px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  

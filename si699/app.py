@@ -29,7 +29,7 @@ def home():
     return render_template('home.html')
 
 
-@app.route("/register")
+@app.route("/register", methods=['GET', 'POST'])
 def register():
     # Get username, email, and password from form data
     username = request.form['username']
